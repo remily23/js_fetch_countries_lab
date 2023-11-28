@@ -4,8 +4,8 @@
 const getCountryByName = async(countryName) => {
     countryName.preventDefault();
     const response = await fetch(`https://restcountries.com/v3.1/name/${countryName}`)
-    const data = await response.json();
-    console.log(data);
+    const jsonData = await response.json();
+    console.log(jsonData);
 
 const countryInfo = document.createElement("h2");
 const listName = document.createElement("h3");
@@ -20,10 +20,13 @@ countryInfo.appendChild(listName);
 const onSubmit = (event) => {
     event.preventDefault();
     getCountryByName(event.target.countries.value);
+
 }
 
-const searchSubmit = document.querySelector("search");
-searchSubmit.addEventListener("submit", onSubmit)
+const searchForm = document.querySelector("search");
+searchForm.addEventListener("submit", onSubmit);
+
+
 getCountryByName("australia");
 
 
